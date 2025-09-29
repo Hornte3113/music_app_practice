@@ -8,13 +8,116 @@
     background: yellow;
 }
 
-@media (orientation: landscape) and (width >= 800px) and (width <= 1920px){}
+/* === Landscape (800–1920px) === */
+@media (orientation: landscape) and (800px <= width <= 1920px) {
+  body { background: #191717; }
 
-@media(orientation: landscape) and (800px <= width <= 1920px) {
-    .music-player{
-        background: red;
-    }
+  .container{
+    display: grid;
+    grid-template-columns: 1.6fr 1fr; /* izquierda card, derecha lista */
+    gap: 32px;
+    align-items: center;
+    min-height: 100vh;
+    padding: 32px 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* El reproductor deja de tener fondo sólido */
+  .music-player{
+    background: transparent;
+    display: grid;
+    grid-template-rows: auto 1fr auto auto; /* nav, card, barra, controles */
+    gap: 24px;
+  }
+
+  /* Tarjeta roja con imagen a la izquierda y texto a la derecha */
+  #song-details{
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    align-items: center;
+    gap: 24px;
+    background: #d1222a;        /* rojo tarjeta */
+    border-radius: 18px;
+    padding: 18px 22px;
+  }
+
+  #song-img{
+    width: 240px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: none;
+    box-shadow: none;
+    display: block;
+  }
+
+  .music-player > #song-details > h1{
+    color: #fff;
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .music-player > #song-details > h3{
+    color: #ffe6ea;
+    font-weight: 400;
+  }
+
+  /* Barra de progreso centrada y más ancha */
+  .audio{
+    display: flex;
+    justify-content: center;
+  }
+  #progress{
+    max-width: 560px;
+    margin: 0;
+    background: #fff;
+  }
+
+  /* Controles centrados */
+  .song-controls{
+    justify-content: center;
+    gap: 28px;
+  }
+
+  /* ===== Sidebar “Popular” ===== */
+  .sidebar{
+    color: #fff;
+  }
+  .sidebar > h3{
+    opacity: .85;
+    margin-bottom: 16px;
+  }
+  .sidebar .item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    margin-bottom: 10px;
+    border: 1px solid rgba(255,255,255,.06);
+  }
+  .sidebar .item .meta{
+    display: grid;
+    gap: 2px;
+  }
+  .sidebar .item .tag{
+    font-size: 12px;
+    opacity: .65;
+  }
+  .sidebar .item strong{
+    font-size: 14px;
+  }
+  .sidebar .item .play-dot{
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: none; cursor: pointer;
+    background: #4b7bfd; /* puntito azul */
+  }
 }
+
+/* Mantén tu bloque de portrait tal como lo tienes (ya centra y apila):contentReference[oaicite:2]{index=2} */
 
 @media(orientation: portrait) {
     .music-player{
@@ -48,7 +151,12 @@
         border-radius: 50%;
         border: 8px solid #fff;
         box-shadow: 0 10px 60px rgba(255, 26, 26, 0.22);
+         display: block;       /* Convierte la imagen en un bloque */
+    margin: 0 auto;  
+    ;
+        
     }
+    
 
     .music-player > #song-details > h1 {
         font-size: 20px;

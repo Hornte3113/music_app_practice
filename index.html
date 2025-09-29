@@ -6,6 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="./styles.css">
     <script type="module" src="./main.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
@@ -33,12 +35,54 @@
             </div>
 
             <div class="song-controls">
-                <span id="lastest">last</span>
-                <span id="play" class="play">play</span>
-                <span id="forward">forward</span>
+                <span id="lastest"><span class="material-symbols-outlined">
+fast_forward
+</span></span>
+                <span id="play" class="play"><span class="material-symbols-outlined">
+play_pause
+</span></span>
+                <span id="forward"><span class="material-symbols-outlined">
+fast_rewind
+</span></span>
             </div>
 
         </div>
+        <aside class="sidebar">
+  <h3>Popular</h3>
+
+  <div class="item">
+    <div class="meta">
+      <span class="tag">Rock</span>
+      <strong>Red Hot Chilipeppers</strong>
+    </div>
+    <button class="play-dot"></button>
+  </div>
+
+  <div class="item">
+    <div class="meta">
+      <span class="tag">Rock</span>
+      <strong>AC-DC</strong>
+    </div>
+    <button class="play-dot"></button>
+  </div>
+
+  <div class="item">
+    <div class="meta">
+      <span class="tag">Rock Pop</span>
+      <strong>Arctic Monkeys</strong>
+    </div>
+    <button class="play-dot"></button>
+  </div>
+
+  <div class="item">
+    <div class="meta">
+      <span class="tag">Clásico</span>
+      <strong>Frédéric Chopin</strong>
+    </div>
+    <button class="play-dot"></button>
+  </div>
+</aside>
+
     </div>
 </body>
 </html>
