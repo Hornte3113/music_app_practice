@@ -1,7 +1,6 @@
 import createPlaylist from "./utils/playlist.js";
+import audioController from "./app/player.js";
 
-let progress_bar = document.getElementById("progress");
-let media = document.getElementById("media");
 let play_btn = document.getElementById("play");
 const song_img = document.getElementById("song-img");
 const lastest = document.getElementById("lastest");
@@ -28,40 +27,18 @@ const songs = [
         },
     ];
 
-const last = [];
-
-const playlist = createPlaylist(songs.length);
-
-let playingNow;
-
 window.addEventListener('DOMContentLoaded', () => {
-    playingNow = playlist.pop()
-    loadSong(playingNow);
+    audioController.initializePlayer(createPlaylist(songs, null));
+    loadSong(audioController._actualSong);
 })
 
-function loadSong(i){
+function loadSong(song){
     const title = document.getElementById("title");
     const artist = document.getElementById("artist");
 
-    const now = songs[i];
-
-    media.src = now.song_url;
-    title.innerText = now.song_name;
-    artist.innerText = now.artist_name;
-    song_img.src = now.caratula;
-}
-
-media.addEventListener('loadedmetadata', () => {
-    progress_bar.max = 100;
-    progress_bar.value = 0;
-    if(play_btn.classList.contains("pause")){
-        media.play();
-    }
-});
-
-media.ontimeupdate = function updateProgressBar() {
-    const progress_value = (this.currentTime / this.duration) * 100;
-    progress_bar.value = progress_value;
+    title.innerText = song.song_name;
+    artist.innerText = song.artist_name;
+    song_img.src = song.caratula;
 }
 
 lastest.addEventListener('click', function(){
@@ -79,10 +56,6 @@ forward.addEventListener('click', function(){
     }
 });
 
-progress_bar.oninput = function() {
-    media.currentTime = (this.value/100) * media.duration;
-}
-
 play_btn.addEventListener("click", playPause);
 
 function playPause(){
@@ -98,4 +71,3 @@ function playPause(){
         play_btn.innerText = "Pause";
     }
 }
-
